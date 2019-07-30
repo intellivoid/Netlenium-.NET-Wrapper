@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Intellivoid.Netlenium
 {
-    public class Class1
+    class IResponse
     {
     }
 }
