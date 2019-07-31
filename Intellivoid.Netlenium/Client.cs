@@ -12,7 +12,7 @@ namespace Intellivoid.Netlenium
         internal string session_id;
         internal string endpoint = "http://localhost:6410";
         internal string authentication_password;
-        internal DriverType target_browser = DriverType.auto;
+        internal DriverType target_driver = DriverType.auto;
         internal Proxy proxy_configuration;
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Intellivoid.Netlenium
         /// <summary>
         /// The target browser to use for this session
         /// </summary>
-        public DriverType TargetBrowser => target_browser;
+        public DriverType TargetDriver => target_driver;
 
         /// <summary>
         /// The proxy configuration used for this session
@@ -133,18 +133,18 @@ namespace Intellivoid.Netlenium
         /// <summary>
         /// Public Constructor with a specified driver
         /// </summary>
-        /// <param name="targetBrowser"></param>
-        public Client(DriverType targetBrowser) => target_browser = targetBrowser;
+        /// <param name="targetDriver"></param>
+        public Client(DriverType targetDriver) => target_driver = targetDriver;
 
         /// <summary>
         /// Public Constructor with a specified driver and authentication password
         /// </summary>
         /// <param name="targetBrowser"></param>
         /// <param name="authenticationPassword"></param>
-        public Client(DriverType targetBrowser, string authenticationPassword)
+        public Client(DriverType targetDriver, string authenticationPassword)
         {
             authentication_password = authenticationPassword;
-            target_browser = targetBrowser;
+            target_driver = targetDriver;
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Intellivoid.Netlenium
         /// <param name="proxyConfiguration"></param>
         public Client(DriverType targetDriver, Proxy proxyConfiguration)
         {
-            target_browser = targetDriver;
+            target_driver = targetDriver;
             proxy_configuration = proxyConfiguration;
         }
 
@@ -166,7 +166,7 @@ namespace Intellivoid.Netlenium
         /// <param name="authenticationPassword"></param>
         public Client(DriverType targetDriver, Proxy proxyConfiguration, string authenticationPassword)
         {
-            target_browser = targetDriver;
+            target_driver = targetDriver;
             proxy_configuration = proxyConfiguration;
             authentication_password = authenticationPassword;
         }
@@ -188,7 +188,7 @@ namespace Intellivoid.Netlenium
         public Client(string endpoint, DriverType targetDriver)
         {
             this.endpoint = endpoint;
-            target_browser = targetDriver;
+            target_driver = targetDriver;
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace Intellivoid.Netlenium
         public Client(string endpoint, DriverType targetDriver, string authenticationPassword)
         {
             this.endpoint = endpoint;
-            target_browser = targetDriver;
+            target_driver = targetDriver;
             authentication_password = authenticationPassword;
         }
 
@@ -213,7 +213,7 @@ namespace Intellivoid.Netlenium
         public Client(string endpoint, DriverType targetDriver, Proxy proxyConfiguration)
         {
             this.endpoint = endpoint;
-            target_browser = targetDriver;
+            target_driver = targetDriver;
             proxy_configuration = proxyConfiguration;
         }
 
@@ -227,7 +227,7 @@ namespace Intellivoid.Netlenium
         public Client(string endpoint, DriverType targetDriver, Proxy proxyConfiguration, string authenticationPassword)
         {
             this.endpoint = endpoint;
-            target_browser = targetDriver;
+            target_driver = targetDriver;
             proxy_configuration = proxyConfiguration;
             authentication_password = authenticationPassword;
         }
@@ -357,9 +357,9 @@ namespace Intellivoid.Netlenium
             {
                 var payload = new Dictionary<string, string>();
 
-                if (TargetBrowser != DriverType.auto)
+                if (TargetDriver != DriverType.auto)
                 { 
-                    payload.Add("target_driver", TargetBrowser.ToString().ToLower());
+                    payload.Add("target_driver", target_driver.ToString().ToLower());
                 }
 
                 if(ProxyConfiguration != null)

@@ -54,7 +54,7 @@ namespace Intellivoid.Netlenium
             {
                 endpoint = adminClient.Endpoint,
                 session_id = Id,
-                target_browser = Driver,
+                target_driver = Driver,
                 proxy_configuration = ProxyConfiguration
             };
         }
